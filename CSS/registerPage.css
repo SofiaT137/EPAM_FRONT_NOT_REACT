@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    height: 70px;
+    background-color: #ffff;
+}
+
+section {
+    height: calc(100vh - 70px);
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+legend {
+    margin: 0 auto;
+}
+
+
+h5 {
+    color: grey;
+}
+
+button {
+    width: 142px;
+    height: 30px;
+    color: gray;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid gray ;
+}
+
+.signUpButton {
+    background-color: #6fd098;
+    color: white;
+    border: none;
+}
+
+
+.headerWrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.logoWrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.logoLittle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.searchForm {
+    display: flex;
+    margin-left: 150px;
+}
+
+.searchForm > input {
+    border: 1px solid #6fd098;
+    padding: 7px;
+    width: 700px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px #6fd098;
+}
+
+.searchForm > select {
+    font-size: 20px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px #6fd098;
+    border: 1px solid #6fd098;
+    color: grey;
+    text-align: center;
+}
+
+.formWrapper {
+    width: 700px;
+    height: 400px;
+    border-radius: 3px;
+    background-color: white;
+    border: 2px solid #6fd098;
+    box-shadow: 1px 1px 1px 1px #6fd098;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.registerField {
+    height: 50px;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+
+.buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px;
+    gap: 16px;
+}
+
+.labelInputWrapper {
+    display: flex;    
+    flex-direction: column;
+    gap: 5px;
+    list-style-type: none;
+    width: 300px;
+}
+
+.labelInputWrapper > li > input {
+    border: 1px solid #6fd098 ;
+    border-radius: 3px;
+    padding: 7px;
+    width: 300px;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding-top: 30px;
+}
+
