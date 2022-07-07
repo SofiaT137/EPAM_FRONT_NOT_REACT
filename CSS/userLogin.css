@@ -15,15 +15,14 @@ section {
 }
 
 fieldset{
-    width: 35%;
-    height: 400px;
+    width: 40%;
+    padding: 40px;
     border-radius: 3px;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid #6fd098;  
-    box-shadow: 1px 1px 1px 1px #6fd098;  
     position: absolute;
     top: 50%;
     left: 50%;
@@ -67,32 +66,7 @@ button {
     padding: 4px;
     border: 2px solid #6fd098;
     border-radius: 3px;
-    box-shadow: 1px 1px 1px 1px #6fd098;
-    width: 400px;
-}
-
-.searchForm {
-    display: flex;  
-    margin-left: 150px; 
-}
-
-.searchForm > input{
-    border: 1px solid #6fd098 ;
-    padding: 7px;
-    width: 700px;
-    text-align: center;
-    font-size: 20px;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px 1px #6fd098;    
-}
-
-.searchForm > select{
-    font-size: 20px;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px 1px #6fd098;    
-    border: 1px solid #6fd098 ;
-    color: grey;
-    text-align: center;
+    width: 100%;
 }
 
 .form-text{
