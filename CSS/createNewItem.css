@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    height: 100%;
+    position: relative;
+}
+
+textarea{
+    width: 90%; 
+    height: 100px;
+    resize: none;
+}
+
+button {
+    width: 142px;
+    height: 30px;
+    color: gray;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+
+.addNewCoupon{
+    width: 100%;
+    height: 50px;
+    background-color:  lightgrey;
+    color: white;
+    display: flex;
+    justify-content: start;
+    padding: 15px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.formWrapper {
+    width: 100%;    
+    position: relative;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, +25%);
+}
+
+.columnWrapper {
+    display: flex;
+    justify-content:space-around;
+    list-style-type: none;
+}
+
+
+.firstColumn > li > input,label{
+    display: flex;
+}
+
+.firstColumn > li > input, select {
+    border: 1px solid #6fd098;
+    border-radius: 3px;
+    padding: 7px;
+    width: 300px;
+}
+
+.secondColumn > li > input,label{
+    display: flex;
+}
+
+.secondColumn > li > input, textarea {
+    border: 1px solid #6fd098;
+    border-radius: 3px;
+    padding: 7px;
+    width: 300px;
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.saveButton {
+    background-color: #6fd098;
+    color: white;
+    border: none;
+}

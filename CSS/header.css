@@ -9,8 +9,10 @@ header {
     background-color: #ffff;
 }
 
-h5 {
-    color: grey;
+
+.logoButtonWrapper {
+    display: flex;
+    gap: 5px;
 }
 
 
@@ -84,10 +86,17 @@ h5 {
     width: 50px;
     border-radius: 50%;
     background-color: rgb(242, 242, 242);
-    color:#6fd098;
     text-align: center;
     font-weight: bold;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.newCouponWrapper a {
+    text-decoration: none;
+    color:#6fd098;
 }
 
 

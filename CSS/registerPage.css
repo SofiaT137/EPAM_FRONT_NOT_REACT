@@ -54,20 +54,18 @@ button {
     font-weight: bold;
 }
 
-
 .buttonWrapper {
     display: flex;
     justify-content: flex-end;
-    padding: 30px;
+    padding: 50px;
     gap: 16px;
 }
 
 .labelInputWrapper {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     list-style-type: none;
-    width: 300px;
+    width: 300px;    
 }
 
 .labelInputWrapper > li > input {
@@ -80,9 +78,21 @@ button {
 .inputWrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 30px 20px;
+    justify-content: space-between;
+    padding: 30px 50px;
     gap: 15px;
+}
+
+@media (max-width:1438px) {
+
+    .inputWrapper {
+        justify-content: center;
+    }
+
+    .buttonWrapper {
+        justify-content: center;
+    }
+    
 }
 
 @media (max-width:1250px) {
@@ -96,11 +106,5 @@ button {
 
     .buttonWrapper {
         justify-content: center;
-    }
-}
-
-@media (max-width:1213px) {
-    .formWrapper {
-        height: 600px;
     }
 }
