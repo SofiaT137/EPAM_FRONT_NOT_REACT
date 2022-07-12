@@ -4,45 +4,85 @@
     box-sizing: border-box;
 }
 
+html, body{
+    height: 100%;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
-    height: 100%;
 }
 
 section {
     background-color: lightgrey;
+    position: relative;
+    height: 100%;
 }
 
-img {
-    width: 30%;
+img{
+    width: 60%;
+    height: 300px;
+    object-fit: cover;
 }
 
 .container {
     height: 100%;
-    padding: 30px 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-self: flex-start;
+    padding: 20px 50px;
+
 }
 
 .couponInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30%;
+    width: 300px;
+    height: 300px ;
     background-color: #fff;
     padding: 15px;
     gap: 10px;
 }
 
 .itemDescription {
-    width: 100%;
+    width: 60%;
 }
 
 .timeLeftToBuy {
     display: flex;
     flex-direction: column;
+}
+
+.priceWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.priceWrapper > h4 {
+    color: #6fd098;
+    font-size: 20px;
+}
+
+.priceWrapper > h4 {
+    color: #6fd098;
+    font-size: 20px;
+}
+
+.priceWrapper > a {
+    text-decoration: none;
+    color: gray;
+}
+
+.cartIcon {
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+
+.cartIcon > span {
+    color: #6fd098;
 }
 
 

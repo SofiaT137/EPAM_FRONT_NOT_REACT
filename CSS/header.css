@@ -35,11 +35,11 @@ header {
     object-fit: cover;
 }
 
-.headerBurger{
+.headerBurger {
     display: none;
 }
 
-.burgerMenu{
+.burgerMenu {
     display: none;
 }
 
@@ -48,7 +48,7 @@ header {
     width: 40%;
 }
 
-.searchForm > input {
+.searchForm>input {
     border: 1px solid #6fd098;
     padding: 7px;
     width: 70%;
@@ -57,7 +57,7 @@ header {
     border-radius: 3px;
 }
 
-.searchForm > select {
+.searchForm>select {
     font-size: 20px;
     border-radius: 3px;
     border: 1px solid #6fd098;
@@ -80,7 +80,7 @@ header {
     display: flex;
 }
 
-.loginSingUpWrapper>a,p {
+.loginSingUpWrapper > a,p {
     text-decoration: none;
     color: grey;
 
@@ -101,21 +101,25 @@ header {
 
 .newCouponWrapper a {
     text-decoration: none;
-    color:#6fd098;
+    color: #6fd098;
 }
 
 
 @media (max-width:768px) {
 
+    body.lock {
+        overflow: hidden;
+    }
+
     .headerWrapper {
-        height: 100%;        
+        height: 100%;
     }
 
     .searchForm {
         display: none;
     }
 
-    .logoButtonWrapper{
+    .logoButtonWrapper {
         display: none;
     }
 
@@ -123,7 +127,7 @@ header {
         display: none;
     }
 
-    .headerBurger{
+    .headerBurger {
         display: block;
         position: relative;
         z-index: 3;
@@ -139,12 +143,12 @@ header {
         left: 0;
         width: 100%;
         height: 2px;
-        top:9px;
+        top: 9px;
         transition: all 0.3s ease 0s;
     }
 
     .headerBurger:before,
-    .headerBurger::after{
+    .headerBurger::after {
         content: '';
         background-color: grey;
         position: absolute;
@@ -154,24 +158,24 @@ header {
         transition: all 0.3s ease 0s;
     }
 
-    .headerBurger:before{
+    .headerBurger:before {
         top: 0;
     }
 
-    .headerBurger::after{
+    .headerBurger::after {
         bottom: 0;
     }
 
     .headerBurger.active:before {
         transform: rotate(45deg);
         background-color: #fff;
-        top:9px;
+        top: 9px;
     }
 
     .headerBurger.active:after {
         transform: rotate(-45deg);
         background-color: #fff;
-        bottom:9px;        
+        bottom: 9px;
     }
 
     .headerBurger.active span {
@@ -180,7 +184,7 @@ header {
 
     .burgerMenu {
         display: block;
-        position:absolute;
+        position: absolute;
         z-index: 2;
         top: -100%;
         left: 0;
@@ -189,9 +193,10 @@ header {
         height: 100%;
         background-color: #6fd098;
         padding: 70px 10px 20px 10px;
+        overflow: auto;
     }
 
-     .burgerMenu.active {
+    .burgerMenu.active {
         top: 0;
     }
 
@@ -211,4 +216,3 @@ header {
         padding: 50px;
     }
 }
-
