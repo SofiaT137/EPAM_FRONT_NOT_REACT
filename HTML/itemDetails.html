@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>NEW ITEM</title>
+    <title>ITEM DETAILS</title>
     <link rel="shortcut icon" href="/images/logoIc.ico" type="image/x-icon">
     <link rel="stylesheet" href="./../CSS/header.css">
-    <link rel="stylesheet" href="./../CSS/createNewItem.css">
+    <link rel="stylesheet" href="./../CSS/itemDetails.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
@@ -81,55 +81,39 @@
         </div>
     </header>
     <section>
-        <div class="addNewCoupon">Add new coupon</div>
-        <form class="formWrapper" action="someJSFile4.js" name="Register form">
-            <ul class="columnWrapper">
-                <div class="firstColumn">
-                    <li>
-                        <label for="companyName">Company</label>
-                        <input type="text" id="companyName">
-                    </li>
-                    <li>
-                        <label for="Category">Category</label>
-                        <select name="All categories" id="Category">
-                            <option value="none" selected disabled hidden>Category Name</option>
-                            <option value="One">One</option>
-                            <option value="Two">Two</option>
-                        </select><br>
-                    </li>
-                    <li>
-                        <label for="validTo">Valid to</label>
-                        <input type="datetime-local" id="validTo">
-                    </li>
-                    <li>
-                        <label for="price">Price</label>
-                        <input type="number" id="price">
-                    </li>
-                    <li>
-                        <label for="images">Images</label>
-                        <input type="image" id="images">
-                    </li>
+        <div class="container">
+            <div class="imgage">
+                <img src="./../images/cat1.jpg" alt="" />
+            </div>
+            <div class="couponInfo">
+                <h2>Coupon Name</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Similique accusamus necessitatibus placeat sequi voluptatum consequatur a,
+                    facilis officia ducimus ullam quam praesentium, nihil deleniti,
+                    sit accusantium incidunt voluptatibus nostrum cum.</p>
+                <div class="timeLeftToBuy">
+                    <h6>Time Left To Buy</h6>
+                    <h5>12 days 14 hours</h5>
                 </div>
-                <div class="secondColumn">
-                    <li>
-                        <label for="itemName">Item name</label>
-                        <input type="text" id="itemName">
-                    </li>
-                    <li>
-                        <label for="shortDescription">Short description</label>
-                        <textarea name="shortDescription" id="shortDescription" cols="30" rows="10"></textarea>
-                    </li>
-                    <li>
-                        <label for="longDescription">Long description</label>
-                        <textarea name="longDescription" id="longDescription" cols="30" rows="10"></textarea>
-                    </li>
-                    <li class="buttonWrapper">
-                        <button type="reset">Back</button>
-                        <button type="submit" class="saveButton">Save</button>
-                    </li>
-                </div>
-            </ul>
-        </form>
+                <h4>$235</h4>
+                <a class="cartIcon" href="">
+                    Add to cart
+                    <span class="material-icons">
+                        shopping_cart
+                    </span>
+                </a>
+            </div>
+            <div class="itemDescription">
+                <h3>Item details description</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eius quidem quia quisquam ratione quas
+                    corrupti molestiae officia, ab dignissimos deleniti minus laboriosam, corporis hic repellendus qui
+                    voluptates atque fugit? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eius quidem
+                    quia
+                    quisquam ratione quas
+                    corrupti molestiae officia, ab dignissimos deleniti minus laboriosam, corporis hic repellendus qui
+                    voluptates atque fugit?</p>
+            </div>
+        </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="./../JS/script.js"></script>

@@ -15,7 +15,6 @@ header {
     gap: 5px;
 }
 
-
 .headerWrapper {
     display: flex;
     justify-content: space-between;
@@ -36,14 +35,20 @@ header {
     object-fit: cover;
 }
 
+.headerBurger{
+    display: none;
+}
+
+.burgerMenu{
+    display: none;
+}
 
 .searchForm {
     display: flex;
-    /* margin-left: 10%; */
     width: 40%;
 }
 
-.searchForm>input {
+.searchForm > input {
     border: 1px solid #6fd098;
     padding: 7px;
     width: 70%;
@@ -52,7 +57,7 @@ header {
     border-radius: 3px;
 }
 
-.searchForm>select {
+.searchForm > select {
     font-size: 20px;
     border-radius: 3px;
     border: 1px solid #6fd098;
@@ -100,27 +105,110 @@ header {
 }
 
 
-@media (max-width:930px) {
-    .headerWrapper {
-        padding-right: 30px;
-    }
-}
-
-
-@media (max-width:700px) {
-    header {
-        height: 140px;
-    }
+@media (max-width:768px) {
 
     .headerWrapper {
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        height: 130px;
-        padding: 0;
+        height: 100%;        
     }
 
     .searchForm {
-        margin-left: 0;
+        display: none;
+    }
+
+    .logoButtonWrapper{
+        display: none;
+    }
+
+    .navWrapper {
+        display: none;
+    }
+
+    .headerBurger{
+        display: block;
+        position: relative;
+        z-index: 3;
+        width: 30px;
+        height: 20px;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .headerBurger span {
+        position: absolute;
+        background-color: grey;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top:9px;
+        transition: all 0.3s ease 0s;
+    }
+
+    .headerBurger:before,
+    .headerBurger::after{
+        content: '';
+        background-color: grey;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s;
+    }
+
+    .headerBurger:before{
+        top: 0;
+    }
+
+    .headerBurger::after{
+        bottom: 0;
+    }
+
+    .headerBurger.active:before {
+        transform: rotate(45deg);
+        background-color: #fff;
+        top:9px;
+    }
+
+    .headerBurger.active:after {
+        transform: rotate(-45deg);
+        background-color: #fff;
+        bottom:9px;        
+    }
+
+    .headerBurger.active span {
+        transform: scale(0);
+    }
+
+    .burgerMenu {
+        display: block;
+        position:absolute;
+        z-index: 2;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        transition: all 0.3s ease 0s;
+        height: 100%;
+        background-color: #6fd098;
+        padding: 70px 10px 20px 10px;
+    }
+
+     .burgerMenu.active {
+        top: 0;
+    }
+
+    .burgerList {
+        display: block;
+    }
+
+    .burgerList li {
+        margin: 0px 0px 20px 0px;
+    }
+
+    .burgerList li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        text-transform: uppercase;
+        padding: 50px;
     }
 }
+
