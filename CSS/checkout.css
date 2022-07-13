@@ -8,6 +8,7 @@ html, body {
     height: 100%;
 }
 
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: white;
@@ -16,12 +17,14 @@ body {
 
 img {
     width: 100px;
+    height: 100px;
     object-fit: cover;    
 }
 
 hr{
-    width: 40%;
+    width: 60%;
     color: grey;
+    margin-top: 20px;
 }
 
 button {
@@ -47,11 +50,10 @@ button {
 
 .container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     padding-top: 10px;
-    width: 300px;
+    width: 50%;
     gap: 30px;
 }
 
@@ -66,5 +68,27 @@ button {
     border: none;
 }
 
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.colunmOne{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.itemDescription {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    width: 70%;
+    padding-right: 50px;
+}
 
 

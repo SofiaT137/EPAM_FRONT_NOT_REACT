@@ -10,28 +10,25 @@ html, body{
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #fff;
+    background-color: lightgrey;
 }
 
 section {
-    background-color: lightgrey;
     position: relative;
-    height: 100%;
 }
 
 img{
-    width: 60%;
+    width: 70%;
     height: 300px;
     object-fit: cover;
 }
 
 .container {
-    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-self: flex-start;
-    padding: 20px 50px;
+    padding: 20px 150px;
 }
 
 .couponInfo {
@@ -46,7 +43,8 @@ img{
 }
 
 .itemDescription {
-    width: 60%;
+    width: 70%;
+    padding-top: 20px;
 }
 
 .timeLeftToBuy {
@@ -82,6 +80,47 @@ img{
 
 .cartIcon > span {
     color: #6fd098;
+}
+
+
+@media (max-width:768px) {
+
+    img {
+        width: 80%;
+        height: auto;
+    }
+
+    .container {
+        padding: 20px 10px;
+        justify-content: center;
+    }
+
+    .couponInfo {
+        margin-top: 20px;
+    }
+
+    .itemDescription {
+        width: 80%;
+        margin-top: 20px;
+    }
+    
+}
+@media (max-width:321px) {
+
+    img {
+        width: 300px;
+        height: auto;
+    }
+
+    .container {
+        padding: 20px 10px;
+        justify-content: center;
+    }
+
+    .itemDescription {
+        width: 100%;
+    }
+    
 }
 
 

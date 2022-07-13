@@ -44,7 +44,6 @@ img {
     align-items: center;
     padding: 20px 30px;
     gap: 20px;
-
 }
 
 .categoryWrapper {
@@ -70,5 +69,28 @@ img {
 
 .card {
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.descriptionExp {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addToFavorite {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardImage {
+    width: 100%;
+    height: 150px;
 }
 
