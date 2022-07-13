@@ -137,6 +137,10 @@ header {
         margin-right: 0;
     }
 
+    .headerBurger:hover {
+        cursor: pointer;
+    }
+
     .headerBurger span {
         position: absolute;
         background-color: grey;
