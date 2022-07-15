@@ -53,7 +53,7 @@ button {
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
-    width: 50%;
+    width: 60%;
     gap: 30px;
 }
 
@@ -69,7 +69,7 @@ button {
 }
 
 .wrapper {
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -86,9 +86,51 @@ button {
 .itemDescription {
     display: flex;
     flex-direction: column;
-    font-size: 20px;
+    font-size: 15px;
     width: 70%;
     padding-right: 50px;
+    gap: 10px;
+}
+
+.itemDescription > h5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.priceWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 54%;
+    align-items: flex-end;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+.buttonWrapper {
+    display: flex;
+    gap: 15px;
+}
+
+@media (max-width: 320px) {
+    .colunmOne {
+        flex-wrap:wrap;
+    }
+
+    .priceWrapper {
+        align-items: center;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .colunmOne {
+        flex-wrap:wrap;
+    }
+
+    .priceWrapper {
+        width: 60%;
+    }
+    
 }
 
 
