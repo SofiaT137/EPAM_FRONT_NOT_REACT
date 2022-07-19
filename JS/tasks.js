@@ -95,10 +95,10 @@ function repeatingLitters(string) {
  *      f3() ➞ ""
  */
 function redundant(str) {
-    function redundant2(str){
+    function redundant2(){
         return str;
     }
-    return redundant2(str);
+    return redundant2;
 }
 
 /**
@@ -146,4 +146,23 @@ function matrixMultiplication(matrix1, matrix2) {
  *      gather("a")("b")("c").order(2)(1)(0).get() ➞ "cba"
  *      gather("e")("l")("o")("l")("!")("h").order(5)(0)(1)(3)(2)(4).get()  ➞ "hello"
  */
-function gather(str) {}
+function gather(str) {
+
+  const a = [...str];
+
+  function order([...numbers]){
+
+    const result = new Array(a.length);
+
+    if(a.length != numbers.length){
+      console.error("wrong number length or words!")
+    } else {
+      for(let i = 0; i < numbers.length; i++) {
+        result[numbers[i]] = a[numbers[i]];
+      }
+    }    
+    return result;
+  }
+
+  return order;
+}

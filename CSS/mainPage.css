@@ -5,17 +5,11 @@
 }
 
 html, body {
-    height: 100%;
+    background-color:  rgb(242, 242, 242);
 }
 
 body {
     font-family: 'Roboto', sans-serif;
-    position: relative;
-}
-
-section {
-    width: 100%;
-    background-color:  rgb(242, 242, 242);
 }
 
 img {
@@ -37,13 +31,14 @@ img {
 }
 
 .container {
-    width: 70%;
+    width: 55%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 20px;
     margin: 0 auto;
+    margin-top: 20px;
 }
 
 .categoryWrapper {
@@ -72,7 +67,7 @@ img {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    width: 180px;
+    width: 170px;
 }
 
 .descriptionExp {
@@ -83,11 +78,6 @@ img {
     gap:10px;
 }
 
-.descriptionExp p {
-    display: flex;
-    align-items: center;
-
-}
 .descriptionExp p a {
     color: grey;
     text-decoration: none;
@@ -110,8 +100,8 @@ img {
 .price {
     display: flex;
     justify-content: space-between;
-    margin: 5px;
-
+    margin: 10px;
+    gap: 20px;
 }
 
 .price button {
@@ -133,4 +123,50 @@ img {
     height: 5%;
     box-sizing: border-box;
 }
+
+.couponName {
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box; 
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+.expires {
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box; 
+    -webkit-box-orient: vertical;
+}
+
+.couponName {
+    letter-spacing: -1px;
+}
+
+.linkBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scrollTop {
+    position: fixed;
+    bottom: 800px;
+    right: 40px;
+    background: rgb(242, 242, 242) ;
+    border-radius: 50%;
+    cursor: pointer;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.scrollTop > span {
+    font-size: 40px;
+    color: #6fd098;
+}
+
+.scrollTop.active {
+    bottom: 40px;
+    visibility: visible;
+}
+
 
