@@ -68,11 +68,21 @@ function getTagNames(description) {
   return result;
 }
 
-window.addEventListener('scroll', () => {
+function _debounce(callback, wait) {
+  let timerId;
+  return (...args) => {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      callback(...args);
+    }, wait);
+  };
+}
+
+window.addEventListener('scroll', _debounce(() => {
     if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
         drawScreen();
-  }
-})
+    }
+  },4000));
 
 drawScreen(mainURL);
 
