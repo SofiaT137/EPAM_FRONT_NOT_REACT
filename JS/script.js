@@ -1,22 +1,28 @@
 const container = document.querySelector(".container");
 const imageUrl = "./../images/cat1.jpg";
-const URL =
-  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=";
+let URL1;
+const mainURL = "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=";
 let count = 0;
 
 function drawScreen(URL) {
+  if(typeof(URL) !== "undefined") {
+    URL1 = URL;
+    count = 0;
+  }
   var totalPages1;
-  fetch(URL)
+  console.log(URL1+count)
+  fetch(URL1+count)
   .then(response => response.json())
   .then(data => {
     loadCards(data)
     totalPages1 = data.totalPages
-    console.log(totalPages1)
+    console.log(totalPages1);
+    if(count == totalPages1){
+      count = 0;
+    }
   });
-  count += 1;  
-  if(count > totalPages1){
-    count = 0;
-  }
+
+  count += 1;
 }
 
 function createCard([img, couponName, description, expires, price]) {
@@ -64,11 +70,11 @@ function getTagNames(description) {
 
 window.addEventListener('scroll', () => {
     if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
-      drawScreen(URL + count);
+        drawScreen();
   }
 })
 
-drawScreen(URL + count);
+drawScreen(mainURL);
 
   const searchForm = document.querySelector(".searchForm");
   searchForm.addEventListener("submit", (e) => {   
@@ -81,19 +87,18 @@ drawScreen(URL + count);
     console.log(name +' ' +searchBy)
    
     function deleteItems() {
-      var deleteElement = container.querySelectorAll('div');
+      var deleteElement = container.querySelectorAll('.card');
       for (let i = 0; i < deleteElement.length; i++) {
         deleteElement[i].remove();
       }
     }
-    var URL1 = '';
-
+    
     if(searchBy === 'name') {
-      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=0&partName=" + name
+      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" + '&partName=' + name + '&pageNumber='
     } else if (searchBy === 'description'){
-      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=0&partDescription=" + name
+      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" + '&partDescription=' + name + '&pageNumber='
     } else if (searchBy === 'tag'){
-      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=0&tagName=" + name
+      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" + '&tagName=' + name + '&pageNumber='
     }  
     deleteItems();
     drawScreen(URL1);
