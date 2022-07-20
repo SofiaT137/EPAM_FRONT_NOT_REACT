@@ -1,26 +1,22 @@
 const container = document.querySelector(".container");
 const imageUrl = "./../images/cat1.jpg";
 const URL =
-  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc";
+  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=";
 let count = 0;
 
-const getAllGiftCertificates = async function () {
-  let temp1 = [];
-  for (let i = 0; i < 10; i++) {
-    const response = await fetch(URL + "&pageNumber=" + i + "&pageSize=10");
-    const data = await response.json();
-    temp1[i] = data.content;
+function drawScreen(URL) {
+  var totalPages1;
+  fetch(URL)
+  .then(response => response.json())
+  .then(data => {
+    loadCards(data)
+    totalPages1 = data.totalPages
+    console.log(totalPages1)
+  });
+  count += 1;  
+  if(count > totalPages1){
+    count = 0;
   }
-  return temp1;
-};
-
-function drawScreen(func) {
-  console.log(count += 1)
-  func.then((res) =>
-    res.forEach((element) => {
-      loadCards(element);
-    })
-  );
 }
 
 function createCard([img, couponName, description, expires, price]) {
@@ -49,11 +45,11 @@ function createCard([img, couponName, description, expires, price]) {
 }
 
 function loadCards(data1) {
-  for (let i = 0; i < data1.length; i++) {
-    let name = data1[i].giftCertificateName;
-    let description = data1[i].tags;
-    let price = data1[i].price;
-    createCard([imageUrl, name, description, data1.length, price]);
+  for (let i = 0; i < 10; i++) {
+    let name = data1.content[i].giftCertificateName;
+    let description = data1.content[i].tags;
+    let price = data1.content[i].price;
+    createCard([imageUrl, name, description, 10, price]);
   }  
 }
 
@@ -66,41 +62,43 @@ function getTagNames(description) {
   return result;
 }
 
-// window.addEventListener('scroll', () => {
-//     if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
-//       drawScreen();
-//   }
-// })
+window.addEventListener('scroll', () => {
+    if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
+      drawScreen(URL + count);
+  }
+})
 
-drawScreen(getAllGiftCertificates());
+drawScreen(URL + count);
 
   const searchForm = document.querySelector(".searchForm");
   searchForm.addEventListener("submit", (e) => {   
 
+    e.preventDefault();
     const formData = new FormData(searchForm);
     const name = formData.get("name");
+    const searchBy = formData.get("searchBy");
+
+    console.log(name +' ' +searchBy)
    
-    e.preventDefault();
     function deleteItems() {
       var deleteElement = container.querySelectorAll('div');
       for (let i = 0; i < deleteElement.length; i++) {
         deleteElement[i].remove();
       }
     }
+    var URL1 = '';
 
-    const getAllGiftCertificatesSearchedByTag = async function () {
-        let temp2 = [];
-        const response = await fetch(
-          URL + "&pageNumber=" + 0 + "&pageSize=10" + "&tagName=" + name
-        );
-        const data = await response.json();
-        temp2[0] = data.content
-        console.log(data.content)
-        return temp2;
-    };
-    deleteItems();      
-    drawScreen(getAllGiftCertificatesSearchedByTag())
+    if(searchBy === 'name') {
+      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=0&partName=" + name
+    } else if (searchBy === 'description'){
+      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=0&partDescription=" + name
+    } else if (searchBy === 'tag'){
+      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=0&tagName=" + name
+    }  
+    deleteItems();
+    drawScreen(URL1);
   });
+
 
 
 
