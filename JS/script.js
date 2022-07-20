@@ -1,40 +1,29 @@
-const container = document.querySelector('.container')
+const container = document.querySelector(".container");
 const imageUrl = "./../images/cat1.jpg";
-const URL = 'http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc'
+const URL =
+  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc";
 let count = 0;
 
-// const getAllGiftCertificates = function(){  
-//   let temp1 = [];
-//   for(let i = 0; i < 10; i++){
-//    const gs = fetch(URL+'&pageNumber='+ i + '&pageSize=10')
-//       .then((response) => response.json())
-//       .then((data) => {data});
+const getAllGiftCertificates = async function () {
+  let temp1 = [];
+  for (let i = 0; i < 10; i++) {
+    const response = await fetch(URL + "&pageNumber=" + i + "&pageSize=10");
+    const data = await response.json();
+    temp1[i] = data.content;
+  }
+  return temp1;
+};
 
-//       const temp = async () => {
-//         const a = await gs;
-//         console.log(a);
-//       };
-
-//       temp();
-//   }
-//   return temp1;
-// }
-
-const content = fetch(URL+'&pageNumber='+ 0 + '&pageSize=10')
-  .then((response) => response.json())
-  .then((data) => {
-    return data.content;
-  });
-
-function drawScreen() { 
-  loadCards(10, content.then((data1) => {
-    console.log(data1[0].giftCertificateName)
-      return data1;
-  }))
+function drawScreen(func) {
+  func.then((res) =>
+    res.forEach((element) => {
+      loadCards(2, element);
+    })
+  );
 }
 
-  function createCard([img,couponName,description,expires,price]){
-    let code = ` <div class="card">
+function createCard([img, couponName, description, expires, price]) {
+  let code = ` <div class="card">
                   <img class="cardImage" src = "${img}">
                   <div class="addToFavorite">
                       <h3 class="couponName">${couponName}</h3>
@@ -55,45 +44,51 @@ function drawScreen() {
                   </div>
               </div>
     `;
-    container.innerHTML += code;  
-  }
-
-  function loadCards(numImages, data1){
-    console.log(data1.then((g) => {
-      for(let i = 0; i<numImages; i++){
-        let name = g[i].giftCertificateName;
-        let description = g[i].tags;
-        let price = g[i].price;
-        createCard([imageUrl,name,description,numImages,price])
-      };    
-    }))
-  } 
-
-function getTagNames (description) {  
-    var result = new Array(3);
-      for(let i = 0; i< 3; i++){
-      var link = description[i].name;
-      result[i] = '<a class ="links" href="">' +  link + '</a>';
-   }
-   return result
+  container.innerHTML += code;
 }
 
-  window.addEventListener('scroll', () => {
-      if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
-        drawScreen();
-    }
-  })
+function loadCards(numImages, data1) {
+  for (let i = 0; i < numImages; i++) {
+    let name = data1[i].giftCertificateName;
+    let description = data1[i].tags;
+    let price = data1[i].price;
+    createCard([imageUrl, name, description, numImages, price]);
+  }  
+}
 
-drawScreen();  
+function getTagNames(description) {
+  var result = new Array(3);
+  for (let i = 0; i < 3; i++) {
+    var link = description[i].name;
+    result[i] = '<a class = "links" href="">' + link + "</a>";
+  }
+  return result;
+}
 
+// window.addEventListener('scroll', () => {
+//     if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
+//       drawScreen();
+//   }
+// })
 
-  // linkBox.addEventListener('click', () => {
-  //       const URL1 = 'http://localhost:8085/module2/gift_certificates/filter/?tagName=' + link
-  //       console.log(link)
-  //       fetch(URL1)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         loadCards(10,data);
-  //       })   
-  // })
+drawScreen(getAllGiftCertificates());
+
+const searchForm = document.querySelector(".searchForm");
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(searchForm);
+  const name = formData.get("name");
+
+  const getAllGiftCertificatesSearchedByTag = async function () {
+      const response = await fetch(
+        URL + "&pageNumber=" + 0 + "&pageSize=10" + "&tagName=" + name
+      );
+      const data = await response.json();
+      console.log(data.content)
+      return data.content;
+      };
+
+  drawScreen(getAllGiftCertificatesSearchedByTag());
+});
+
 
