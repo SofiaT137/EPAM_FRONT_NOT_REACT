@@ -18,4 +18,4 @@ window.addEventListener("scroll", () => {
 
 function scrollUp() {
     window.scrollTo(0,0);
-  }
+}

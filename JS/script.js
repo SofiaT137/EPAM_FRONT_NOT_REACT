@@ -15,9 +15,10 @@ const getAllGiftCertificates = async function () {
 };
 
 function drawScreen(func) {
+  console.log(count += 1)
   func.then((res) =>
     res.forEach((element) => {
-      loadCards(2, element);
+      loadCards(element);
     })
   );
 }
@@ -47,12 +48,12 @@ function createCard([img, couponName, description, expires, price]) {
   container.innerHTML += code;
 }
 
-function loadCards(numImages, data1) {
-  for (let i = 0; i < numImages; i++) {
+function loadCards(data1) {
+  for (let i = 0; i < data1.length; i++) {
     let name = data1[i].giftCertificateName;
     let description = data1[i].tags;
     let price = data1[i].price;
-    createCard([imageUrl, name, description, numImages, price]);
+    createCard([imageUrl, name, description, data1.length, price]);
   }  
 }
 
@@ -73,22 +74,35 @@ function getTagNames(description) {
 
 drawScreen(getAllGiftCertificates());
 
-const searchForm = document.querySelector(".searchForm");
-searchForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(searchForm);
-  const name = formData.get("name");
+  const searchForm = document.querySelector(".searchForm");
+  searchForm.addEventListener("submit", (e) => {   
 
-  const getAllGiftCertificatesSearchedByTag = async function () {
-      const response = await fetch(
-        URL + "&pageNumber=" + 0 + "&pageSize=10" + "&tagName=" + name
-      );
-      const data = await response.json();
-      console.log(data.content)
-      return data.content;
-      };
+    const formData = new FormData(searchForm);
+    const name = formData.get("name");
+   
+    e.preventDefault();
+    function deleteItems() {
+      var deleteElement = container.querySelectorAll('div');
+      for (let i = 0; i < deleteElement.length; i++) {
+        deleteElement[i].remove();
+      }
+    }
 
-  drawScreen(getAllGiftCertificatesSearchedByTag());
-});
+    const getAllGiftCertificatesSearchedByTag = async function () {
+        let temp2 = [];
+        const response = await fetch(
+          URL + "&pageNumber=" + 0 + "&pageSize=10" + "&tagName=" + name
+        );
+        const data = await response.json();
+        temp2[0] = data.content
+        console.log(data.content)
+        return temp2;
+    };
+    deleteItems();      
+    drawScreen(getAllGiftCertificatesSearchedByTag())
+  });
+
+
+
 
 
