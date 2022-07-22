@@ -72,21 +72,22 @@ function getTagNames(description) {
   return result;
 }
 
-  function _debounce(callback, wait) {
-    let timerId;
-    return (...args) => {
-      clearTimeout(timerId);
-      timerId = setTimeout(() => {
-        callback(...args);
-      }, wait);
-    };
-  }
-  
-  window.addEventListener('scroll', _debounce(() => {
-      if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
-          drawScreen();
-      }
-    }, 2000));
+function debounce(func, timeout = 300){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
+function saveInput(){
+  if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight)
+    drawScreen();
+}
+
+const processChange = debounce(() => saveInput());
+
+window.addEventListener('scroll', processChange);
 
 
   function start () {
@@ -111,17 +112,3 @@ function getTagNames(description) {
       deleteElement[i].remove();
     }
   }
-
-  
-
-
-
-
-  
-  
-  
-
-
-
-
-

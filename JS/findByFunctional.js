@@ -1,7 +1,11 @@
 const searchForm = document.querySelector(".searchForm");
 
-searchForm.addEventListener("submit", (e) => {
+searchForm.addEventListener("submit", (e) => { 
+
   e.preventDefault();
+
+  window.removeEventListener('scroll', processChange);
+
   const formData = new FormData(searchForm);
   const name = formData.get("name");
   const searchBy = formData.get("searchBy");
@@ -26,4 +30,10 @@ searchForm.addEventListener("submit", (e) => {
       "&pageNumber=";
   }
   deleteItems();
+  localStorage.setItem("data", JSON.stringify([]))
+  localStorage.setItem("count", 0)
+  localStorage.setItem("scrollPosition", 0)
+  drawScreen(URL1) 
+
 });
+
