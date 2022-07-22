@@ -7,15 +7,11 @@ window.addEventListener("scroll", () => {
     }
 })
 
-// const scrollTopButton = document.querySelector('.scrollTop');
-
-// console.log(scrollTopButton)
-// scrollTopButton.addEventListener('click', () => {console.log('asdasd')})
-// scrollTopButton.addEventListener("click", (event) => {
-//     console.log("click!")
-// });
-
-
 function scrollUp() {
     window.scrollTo(0,0);
+    localStorage.removeItem("data")
+    localStorage.removeItem("count")
+    localStorage.removeItem("scrollPosition")
+    deleteItems();
+    start();
 }

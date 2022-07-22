@@ -3,6 +3,9 @@ const imageUrl = "./../images/cat1.jpg";
 let URL1;
 const mainURL = "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10&pageNumber=";
 let count = 0;
+let storage = [];
+
+start();
 
 function drawScreen(URL) {
   if(typeof(URL) !== "undefined") {
@@ -10,19 +13,20 @@ function drawScreen(URL) {
     count = 0;
   }
   var totalPages1;
-  console.log(URL1+count)
   fetch(URL1+count)
   .then(response => response.json())
   .then(data => {
+    let massive = JSON.parse(localStorage.getItem("data"))
+    massive.push(data)
+    localStorage.setItem("data", JSON.stringify(massive))
     loadCards(data)
-    totalPages1 = data.totalPages
-    console.log(totalPages1);
-    if(count == totalPages1){
+    totalPages1 = data.totalPages;
+    if(count >= totalPages1){
       count = 0;
     }
   });
-
   count += 1;
+  localStorage.setItem("count", count)
 }
 
 function createCard([img, couponName, description, expires, price]) {
@@ -32,7 +36,7 @@ function createCard([img, couponName, description, expires, price]) {
                       <h3 class="couponName">${couponName}</h3>
                       <button type="submit" class="addToFavorite">
                           <span class="material-icons">
-                              favorite
+                              favorite i98
                           </span>
                       </button>
                   </div>
@@ -47,7 +51,7 @@ function createCard([img, couponName, description, expires, price]) {
                   </div>
               </div>
     `;
-  container.innerHTML += code;
+    container.innerHTML += code
 }
 
 function loadCards(data1) {
@@ -68,52 +72,54 @@ function getTagNames(description) {
   return result;
 }
 
-function _debounce(callback, wait) {
-  let timerId;
-  return (...args) => {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => {
-      callback(...args);
-    }, wait);
-  };
-}
-
-window.addEventListener('scroll', _debounce(() => {
-    if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
-        drawScreen();
-    }
-  },4000));
-
-drawScreen(mainURL);
-
-  const searchForm = document.querySelector(".searchForm");
-  searchForm.addEventListener("submit", (e) => {   
-
-    e.preventDefault();
-    const formData = new FormData(searchForm);
-    const name = formData.get("name");
-    const searchBy = formData.get("searchBy");
-
-    console.log(name +' ' +searchBy)
-   
-    function deleteItems() {
-      var deleteElement = container.querySelectorAll('.card');
-      for (let i = 0; i < deleteElement.length; i++) {
-        deleteElement[i].remove();
+  function _debounce(callback, wait) {
+    let timerId;
+    return (...args) => {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => {
+        callback(...args);
+      }, wait);
+    };
+  }
+  
+  window.addEventListener('scroll', _debounce(() => {
+      if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
+          drawScreen();
       }
-    }
-    
-    if(searchBy === 'name') {
-      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" + '&partName=' + name + '&pageNumber='
-    } else if (searchBy === 'description'){
-      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" + '&partDescription=' + name + '&pageNumber='
-    } else if (searchBy === 'tag'){
-      URL1 =  "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" + '&tagName=' + name + '&pageNumber='
-    }  
-    deleteItems();
-    drawScreen(URL1);
-  });
+    }, 2000));
 
+
+  function start () {
+    if(localStorage.getItem("data") == null){
+      localStorage.setItem("data", JSON.stringify(storage))
+      localStorage.setItem("count", 0)
+      drawScreen(mainURL)      
+    }else {
+      let count1 = localStorage.getItem("count")
+      count = parseInt(count1);
+      URL1 = mainURL;
+      let massive1 = JSON.parse(localStorage.getItem("data"))
+      massive1.forEach(element => {
+        loadCards(element)
+      });
+    }
+  }
+
+  function deleteItems() {
+    var deleteElement = container.querySelectorAll('.card');
+    for (let i = 0; i < deleteElement.length; i++) {
+      deleteElement[i].remove();
+    }
+  }
+
+  
+
+
+
+
+  
+  
+  
 
 
 
