@@ -91,7 +91,7 @@ window.addEventListener('scroll', processChange);
 
 
   function start () {
-    if(localStorage.getItem("data") == null){
+      if(localStorage.getItem("data") == null || JSON.parse(localStorage.getItem("data")).length == 0){
       localStorage.setItem("data", JSON.stringify(storage))
       localStorage.setItem("count", 0)
       drawScreen(mainURL)      
