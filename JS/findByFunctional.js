@@ -9,22 +9,22 @@ searchForm.addEventListener("submit", (e) => {
   const formData = new FormData(searchForm);
   const name = formData.get("name");
   const searchBy = formData.get("searchBy");
-  let URL3;
+  let changedURL;
 
   if (searchBy === "name") {
-    URL3 =
+    changedURL =
       "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" +
       "&partName=" +
       name +
       "&pageNumber=";
   } else if (searchBy === "description") {
-    URL3 =
+    changedURL =
       "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" +
       "&partDescription=" +
       name +
       "&pageNumber=";
   } else if (searchBy === "tag") {
-    URL3 =
+    changedURL =
       "http://localhost:8085/module2/gift_certificates/filter/?sortByCreationDate=desc&pageSize=10" +
       "&tagName=" +
       name +
@@ -34,23 +34,22 @@ searchForm.addEventListener("submit", (e) => {
   localStorage.setItem("data", JSON.stringify([]));
   localStorage.setItem("count", 0);
   localStorage.setItem("scrollPosition", 0);
-  getTotalPages(URL3+0)
-  drawScreen1(getAllGiftCertificates(URL3));
+  getTotalPages(changedURL+0)
+  drawScreen1(getAllGiftCertificates(changedURL));
 });
 
-function getTotalPages(URL3) {
-  console.log(URL3)
-  fetch(URL3)
+function getTotalPages(changedURL) {
+  fetch(changedURL)
     .then((response) => response.json())
     .then((data) => {
       pageNumber = data.totalPages;
     });
 }
 
-const getAllGiftCertificates = async function (URL1) {
+const getAllGiftCertificates = async function (changedURL) {
   let temp1 = [];
   for (let i = 0; i < pageNumber; i++) {
-    const response = await fetch(URL1 + i);
+    const response = await fetch(changedURL + i);
     const data = await response.json();
     temp1[i] = data;
   }
